@@ -113,8 +113,6 @@ InitTestScene*.unity*
 !.vscode/extensions.json
 !.vscode/*.code-snippets
 !*.code-workspace
-
-y
 *.vsix
 
 # General MacOS
