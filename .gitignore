@@ -115,6 +115,9 @@ InitTestScene*.unity*
 !*.code-workspace
 *.vsix
 
+# C# Dev Kit cache
+*.csproj.lscache
+
 # General MacOS
 .DS_Store
 .localized

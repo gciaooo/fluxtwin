@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ApplianceController: MonoBehaviour
+public class ApplianceController: MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
     private ApplianceView applianceView;
@@ -8,14 +9,16 @@ public class ApplianceController: MonoBehaviour
     [SerializeField]
     private Appliance appliance;
 
-
     void Start()
     {
         appliance.OnPowerToggle += (s,isOn) => applianceView.ToggleSprite(isOn);
     }
 
-    void OnMouseDown()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        appliance.TogglePower();
+        if (eventData.button == PointerEventData.InputButton.Left)
+            appliance.TogglePower();
+        if (eventData.button == PointerEventData.InputButton.Right)
+            applianceView.SpawnModeSwitcher(appliance);
     }
 }

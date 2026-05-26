@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -7,7 +9,9 @@ public class Appliance
 {
     [SerializeField]
     private List<ApplianceMode> availableModes;
-    public int CurrentMode {get; set;} = -1;
+    public ReadOnlyCollection<ApplianceMode> AvailableModes {get => availableModes.AsReadOnly();}
+
+    public int CurrentModeIdx {get; set;} = 0;
     public double CurrentPowerDraw {get; set;} = 0;
     public event EventHandler<bool> OnPowerToggle;
 
@@ -21,11 +25,13 @@ public class Appliance
         OnPowerToggle?.Invoke(this, isPoweredOn);
     }
 
-    public void SwitchMode(int mode)
+    public void SwitchMode(int modeIdx)
     {
-        if (availableModes.Count >= mode) return;
-        CurrentMode = mode;
+        if (modeIdx >= availableModes.Count || modeIdx == CurrentModeIdx) return;
+        CurrentModeIdx = modeIdx;
+        Debug.Log("Current Mode = " + CurrentModeIdx);
         if (!isPoweredOn) return;
-        CurrentPowerDraw = availableModes[CurrentMode].PowerDraw;  
+        CurrentPowerDraw = availableModes[CurrentModeIdx].PowerDraw;  
+        Debug.Log("Current PowerDraw = " + CurrentPowerDraw);
     }
 }
