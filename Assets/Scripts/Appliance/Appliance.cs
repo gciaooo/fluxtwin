@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -14,6 +13,7 @@ public class Appliance
     public int CurrentModeIdx {get; set;} = 0;
     public double CurrentPowerDraw {get; set;} = 0;
     public event EventHandler<bool> OnPowerToggle;
+    public event EventHandler<double> OnPowerDrawChange;
 
     private bool isPoweredOn = false;
 
@@ -21,8 +21,17 @@ public class Appliance
     public void TogglePower()
     {
         isPoweredOn = !isPoweredOn;
-        if (!isPoweredOn) CurrentPowerDraw = 0;
+
+        if (!isPoweredOn) SetPowerDraw(0);
+        else SetPowerDraw(availableModes[CurrentModeIdx].PowerDraw);
+    
         OnPowerToggle?.Invoke(this, isPoweredOn);
+    }
+    
+    private void SetPowerDraw(double power)
+    {
+        CurrentPowerDraw = power;
+        OnPowerDrawChange?.Invoke(this, CurrentPowerDraw);
     }
 
     public void SwitchMode(int modeIdx)
@@ -31,7 +40,7 @@ public class Appliance
         CurrentModeIdx = modeIdx;
         Debug.Log("Current Mode = " + CurrentModeIdx);
         if (!isPoweredOn) return;
-        CurrentPowerDraw = availableModes[CurrentModeIdx].PowerDraw;  
+        SetPowerDraw(availableModes[CurrentModeIdx].PowerDraw);
         Debug.Log("Current PowerDraw = " + CurrentPowerDraw);
     }
 }

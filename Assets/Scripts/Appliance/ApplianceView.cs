@@ -7,32 +7,37 @@ public class ApplianceView : MonoBehaviour
     public Sprite spriteOff;
     private SpriteRenderer sr;
 
-    [SerializeField]
-    private Canvas modeSwitcherCanvas;
+    private bool isFirstSpawn = true;
+
     private ApplianceModeSwitcher modeSwitcher;
     [SerializeField]
     private ApplianceModeSwitcher modeSwitcherPrefab;
 
-    public void ToggleSprite(bool isOn)
+    public void ToggleStatusSprites(bool isOn)
     {
         sr.sprite = isOn ? spriteOn : spriteOff;
+
+        modeSwitcher.ToggleStatusButtonSprite(isOn);
     }
 
     public void SpawnModeSwitcher(Appliance appliance)
     {
-        if (modeSwitcher == null)
-        {   
-            modeSwitcher = Instantiate(modeSwitcherPrefab, modeSwitcherCanvas.transform);
+        if (isFirstSpawn) {
             modeSwitcher.SetSwitcherData(gameObject.name, appliance);
+            isFirstSpawn = false;
         }
-        else
-        {
-            modeSwitcher.gameObject.SetActive(true);
-        }
+        modeSwitcher.gameObject.SetActive(true);
+    }
+
+    public void UpdatePowerDrawView(double powerDraw)
+    {
+        modeSwitcher.UpdatePowerDraw(powerDraw);
     }
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        modeSwitcher = Instantiate(modeSwitcherPrefab);
+        modeSwitcher.gameObject.SetActive(false);
     }
 }

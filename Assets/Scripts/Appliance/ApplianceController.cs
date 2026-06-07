@@ -11,14 +11,19 @@ public class ApplianceController: MonoBehaviour, IPointerClickHandler
 
     void Start()
     {
-        appliance.OnPowerToggle += (s,isOn) => applianceView.ToggleSprite(isOn);
+        appliance.OnPowerToggle += (s,isOn) => applianceView.ToggleStatusSprites(isOn);
+        appliance.OnPowerDrawChange += (s,powerDraw) => applianceView.UpdatePowerDrawView(powerDraw);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
-            appliance.TogglePower();
+        {
+            appliance.TogglePower();   
+        }
         if (eventData.button == PointerEventData.InputButton.Right)
-            applianceView.SpawnModeSwitcher(appliance);
+        {
+            applianceView.SpawnModeSwitcher(appliance);   
+        }
     }
 }
