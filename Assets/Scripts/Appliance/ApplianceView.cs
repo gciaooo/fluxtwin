@@ -12,6 +12,9 @@ public class ApplianceView : MonoBehaviour
     private ApplianceModeSwitcher modeSwitcher;
     [SerializeField]
     private ApplianceModeSwitcher modeSwitcherPrefab;
+    
+    [SerializeField]
+    private ModeSwitcherHandler modeSwitcherHandler;
 
     public void ToggleStatusSprites(bool isOn)
     {
@@ -27,6 +30,7 @@ public class ApplianceView : MonoBehaviour
             isFirstSpawn = false;
         }
         modeSwitcher.gameObject.SetActive(true);
+        modeSwitcherHandler.OnModeSwitcherActivated(modeSwitcher);        
     }
 
     public void UpdatePowerDrawView(double powerDraw)
