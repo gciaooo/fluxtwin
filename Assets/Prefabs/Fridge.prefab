@@ -155,6 +155,7 @@ MonoBehaviour:
   spriteOn: {fileID: 5739897283171119737, guid: deb562fdbd92a5040a1c5c9bae3a7d76, type: 3}
   spriteOff: {fileID: -7419904524070093709, guid: 3fec4394dd520294ab08cd36368a3c88, type: 3}
   modeSwitcherPrefab: {fileID: 807269503375468888, guid: 5f8720466a014584db3bb7c7a20a8012, type: 3}
+  modeSwitcherHandler: {fileID: 0}
 --- !u!114 &1422804564753755776
 MonoBehaviour:
   m_ObjectHideFlags: 0

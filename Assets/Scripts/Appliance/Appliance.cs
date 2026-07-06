@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
+[RequireComponent(typeof(ApplianceController))]
+[RequireComponent(typeof(ApplianceView))]
 [Serializable]
 public class Appliance
 {
@@ -14,9 +16,22 @@ public class Appliance
     public double CurrentPowerDraw {get; set;} = 0;
     public event EventHandler<bool> OnPowerToggle;
     public event EventHandler<double> OnPowerDrawChange;
+    public ApplianceTimer Timer = new();
 
     private bool isPoweredOn = false;
+    private bool isTimerInitialized = false;
 
+    Appliance()
+    {
+        Timer.CompletedEvent += () => OnTimerCompleted();
+    }
+
+    public void OnTimerCompleted()
+    {
+        Timer.Stop();
+        isTimerInitialized = false;
+        TogglePower();
+    }
 
     public void TogglePower()
     {
@@ -25,6 +40,23 @@ public class Appliance
         if (!isPoweredOn) SetPowerDraw(0);
         else SetPowerDraw(availableModes[CurrentModeIdx].PowerDraw);
     
+        if (double.IsFinite(availableModes[CurrentModeIdx].Time))
+        {
+            if (isPoweredOn)
+            {
+                if (isTimerInitialized) Timer.UnPause();
+                else 
+                {
+                    Timer.Start((float) availableModes[CurrentModeIdx].Time);
+                    isTimerInitialized = true;
+                }
+            }
+            else
+            {
+                if (isTimerInitialized) Timer.Pause();
+            }
+        }
+
         OnPowerToggle?.Invoke(this, isPoweredOn);
     }
     
@@ -38,9 +70,10 @@ public class Appliance
     {
         if (modeIdx >= availableModes.Count || modeIdx == CurrentModeIdx) return;
         CurrentModeIdx = modeIdx;
-        Debug.Log("Current Mode = " + CurrentModeIdx);
+
         if (!isPoweredOn) return;
         SetPowerDraw(availableModes[CurrentModeIdx].PowerDraw);
-        Debug.Log("Current PowerDraw = " + CurrentPowerDraw);
+
+        if (double.IsFinite(availableModes[CurrentModeIdx].Time) && isTimerInitialized) Timer.Reset((float) availableModes[CurrentModeIdx].Time);
     }
 }

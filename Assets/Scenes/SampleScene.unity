@@ -408,6 +408,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oven
       objectReference: {fileID: 0}
+    - target: {fileID: 1422804564753755776, guid: 877f1f4645c1e4649bc1945828fe7069, type: 3}
+      propertyPath: appliance.availableModes.Array.data[0].time
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422804564753755776, guid: 877f1f4645c1e4649bc1945828fe7069, type: 3}
+      propertyPath: appliance.availableModes.Array.data[1].time
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4526629394460783364, guid: 877f1f4645c1e4649bc1945828fe7069, type: 3}
       propertyPath: modeSwitcherHandler
       value: 

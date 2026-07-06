@@ -13,6 +13,8 @@ public class ApplianceModeSwitcher : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI currentPowerDrawText;
     [SerializeField]
+    private TextMeshProUGUI timeLeftText;
+    [SerializeField]
     private Transform togglesParent;
     [SerializeField]
     private Toggle modeTogglePrefab;
@@ -23,6 +25,7 @@ public class ApplianceModeSwitcher : MonoBehaviour
     [SerializeField]
     private Sprite statusOff;
 
+    private ApplianceTimer applianceTimer;
     private void SetToggles(Appliance appliance)
     {
         for (int i = 0; i < appliance.AvailableModes.Count; i++)
@@ -52,6 +55,8 @@ public class ApplianceModeSwitcher : MonoBehaviour
         modeToggles[appliance.CurrentModeIdx].isOn = true;
 
         statusButton.onClick.AddListener(appliance.TogglePower);
+
+        applianceTimer = appliance.Timer;
     }
     public void UpdatePowerDraw(double powerDraw)
     {
@@ -73,5 +78,9 @@ public class ApplianceModeSwitcher : MonoBehaviour
         GetComponent<Canvas>().worldCamera = Camera.main;
     }
 
-    
+    void Update()
+    {
+        timeLeftText.text = applianceTimer.TimeRemaining.ToString();
+    }
+
 }
