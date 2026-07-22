@@ -9,10 +9,18 @@ public class ApplianceController: MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private Appliance appliance;
 
+    [SerializeField]
+    private WallPlug parentWallPlug;
+
     void Start()
     {
+parentWallPlug.AddAppliance(appliance);
         appliance.OnPowerToggle += (s,isOn) => applianceView.ToggleStatusSprites(isOn);
-        appliance.OnPowerDrawChange += (s,powerDraw) => applianceView.UpdatePowerDrawView(powerDraw);
+        appliance.OnPowerDrawChange += (s,powerDraw) => 
+        {
+applianceView.UpdatePowerDrawView(powerDraw);
+parentWallPlug.OnChildPowerDrawChange();
+        };
     }
 
     public void OnPointerClick(PointerEventData eventData)
