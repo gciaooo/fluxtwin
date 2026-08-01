@@ -38,6 +38,11 @@ public class ApplianceView : MonoBehaviour
         modeSwitcher.UpdatePowerDraw(powerDraw);
     }
 
+    public void ChangeAlpha(float alpha)
+    {
+        sr.color = Color.white - new Color(0,0,0,alpha);
+    }
+
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
