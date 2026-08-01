@@ -6,7 +6,7 @@ public class ApartmentSource: MonoBehaviour, IElecLink
     [SerializeField]
     public double MaximumPowerDraw;
     public List<CircuitLine> circuitLines = new(); 
-    public void AddWallPlug(CircuitLine line)
+    public void AddCircuitLine(CircuitLine line)
     {
         if (circuitLines.Find(x => x == line) == null) circuitLines.Add(line);
     }

@@ -43,6 +43,11 @@ public class CircuitLine: MonoBehaviour, IElecLink
     }
     void Start()
     {
-        ApartmentSourceParent.AddWallPlug(this);
+        ApartmentSourceParent.AddCircuitLine(this);
+    }
+
+    public Vector3 GetParentConnectionPoint()
+    {
+        return ApartmentSourceParent.transform.position;
     }
 }
