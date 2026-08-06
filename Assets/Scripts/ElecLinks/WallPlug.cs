@@ -54,8 +54,8 @@ public class WallPlug : MonoBehaviour, IElecLink
         CircuitLineParent.AddWallPlug(this);
     }
 
-    public Vector3 GetParentConnectionPoint()
+    public GameObject GetParent()
     {
-        return CircuitLineParent.transform.position;
+        return CircuitLineParent.gameObject;
     }
 }

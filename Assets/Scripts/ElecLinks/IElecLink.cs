@@ -5,5 +5,5 @@ public interface IElecLink
     public void Shutdown();
     public void OnChildPowerDrawChange();
 
-    public Vector3 GetParentConnectionPoint();
+    public GameObject GetParent();
 }

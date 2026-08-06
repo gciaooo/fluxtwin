@@ -11,7 +11,7 @@ public class ApartmentSource: MonoBehaviour, IElecLink
         if (circuitLines.Find(x => x == line) == null) circuitLines.Add(line);
     }
 
-    public void RemoveAppliance(CircuitLine line)
+    public void RemoveCircuitLine(CircuitLine line)
     {
         circuitLines.Remove(line);
     }
@@ -31,6 +31,12 @@ public class ApartmentSource: MonoBehaviour, IElecLink
             Debug.Log("Power exceeded!");
         }
     }
+    public GameObject GetParent()
+    {
+        Debug.LogError("Called GetParent on top-level object");
+        return null;
+    }
+    
     public void Shutdown()
     {
         Debug.Log("Shutdown ApartmentSource");

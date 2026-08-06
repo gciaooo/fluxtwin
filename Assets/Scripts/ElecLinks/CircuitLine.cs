@@ -11,7 +11,7 @@ public class CircuitLine: MonoBehaviour, IElecLink
         if (wallPlugs.Find(x => x == plug) == null) wallPlugs.Add(plug);
     }
 
-    public void RemoveAppliance(WallPlug plug)
+    public void RemoveWallPlug(WallPlug plug)
     {
         wallPlugs.Remove(plug);
     }
@@ -46,8 +46,8 @@ public class CircuitLine: MonoBehaviour, IElecLink
         ApartmentSourceParent.AddCircuitLine(this);
     }
 
-    public Vector3 GetParentConnectionPoint()
+    public GameObject GetParent()
     {
-        return ApartmentSourceParent.transform.position;
+        return ApartmentSourceParent.gameObject;
     }
 }

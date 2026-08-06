@@ -67,6 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "EnergyManagementSystem.slnx",
+    "dotnet.defaultSolution": "energy-management-system.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }
