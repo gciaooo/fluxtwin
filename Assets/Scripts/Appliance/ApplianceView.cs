@@ -7,6 +7,8 @@ public class ApplianceView : MonoBehaviour
     public Sprite spriteOff;
     private SpriteRenderer sr;
 
+    private LinkRenderer linkRenderer;
+
     private bool isFirstSpawn = true;
 
     private ApplianceModeSwitcher modeSwitcher;
@@ -41,6 +43,21 @@ public class ApplianceView : MonoBehaviour
     public void ChangeAlpha(float alpha)
     {
         sr.color = Color.white - new Color(0,0,0,alpha);
+    }
+
+    public void SetupLinkRenderer(WallPlug parent)
+    {
+       linkRenderer.SetObjectsCoordinates(parent.gameObject, gameObject); 
+    }
+
+    public void RenderPowerSurge()
+    {
+        linkRenderer.SetErrorLine();
+    }
+
+    void Awake()
+    {
+        linkRenderer = gameObject.AddComponent<LinkRenderer>();        
     }
 
     private void Start()

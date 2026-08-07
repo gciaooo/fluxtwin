@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class CircuitLine: MonoBehaviour, IElecLink
     public double MaximumPowerDraw;
     public ApartmentSource ApartmentSourceParent;
     public List<WallPlug> wallPlugs = new();
+    public event EventHandler<double> OnPowerSurge;
     public void AddWallPlug(WallPlug plug)
     {
         if (wallPlugs.Find(x => x == plug) == null) wallPlugs.Add(plug);
@@ -27,7 +29,7 @@ public class CircuitLine: MonoBehaviour, IElecLink
 
     public void Shutdown()
     {
-        Debug.Log("Shutdown CircuitLine");
+        OnPowerSurge?.Invoke(this, TotalPowerDraw());
         foreach (WallPlug w in wallPlugs)
         {
             w.Shutdown();
@@ -36,10 +38,16 @@ public class CircuitLine: MonoBehaviour, IElecLink
 
     public void OnChildPowerDrawChange()
     {
-        if(TotalPowerDraw() > MaximumPowerDraw) {
-            Debug.Log("Power exceeded!");
+        double t = TotalPowerDraw();
+        if(t > MaximumPowerDraw) {
+            Shutdown();
         }
         ApartmentSourceParent.OnChildPowerDrawChange();
+    }
+    public void DebugLogStats(double total)
+    {
+        String message = $"CircuitLine {gameObject.name}\nPower:{total}W";
+        Debug.Log(message);
     }
     void Start()
     {

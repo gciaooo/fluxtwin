@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class ApartmentSource: MonoBehaviour, IElecLink
     [SerializeField]
     public double MaximumPowerDraw;
     public List<CircuitLine> circuitLines = new(); 
+    public event EventHandler<double> OnPowerSurge;
     public void AddCircuitLine(CircuitLine line)
     {
         if (circuitLines.Find(x => x == line) == null) circuitLines.Add(line);
@@ -27,8 +29,9 @@ public class ApartmentSource: MonoBehaviour, IElecLink
 
     public void OnChildPowerDrawChange()
     {
-        if(TotalPowerDraw() > MaximumPowerDraw) {
-            Debug.Log("Power exceeded!");
+        double t = TotalPowerDraw();
+        if(t > MaximumPowerDraw) {
+            Shutdown();
         }
     }
     public GameObject GetParent()
@@ -36,18 +39,14 @@ public class ApartmentSource: MonoBehaviour, IElecLink
         Debug.LogError("Called GetParent on top-level object");
         return null;
     }
-    
+
     public void Shutdown()
     {
-        Debug.Log("Shutdown ApartmentSource");
+
+        OnPowerSurge?.Invoke(this, TotalPowerDraw());
         foreach (CircuitLine c in circuitLines)
         {
             c.Shutdown();
         }
-    }
-
-    void Start()
-    {
-        Shutdown();
     }
 }

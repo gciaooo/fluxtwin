@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class WallPlug : MonoBehaviour, IElecLink
     public CircuitLine CircuitLineParent;
 
     public List<Appliance> appliances = new();
+
+    public event EventHandler<double> OnPowerSurge;
 
     public void AddAppliance(Appliance app)
     {
@@ -30,7 +33,7 @@ public class WallPlug : MonoBehaviour, IElecLink
     
     public void Shutdown()
     {
-        Debug.Log("Shutdown WallPlug");
+        OnPowerSurge?.Invoke(this, TotalPowerDraw());
         foreach(Appliance appliance in appliances)
         {
             if (appliance.CurrentPowerDraw != 0)
@@ -42,7 +45,8 @@ public class WallPlug : MonoBehaviour, IElecLink
 
     public void OnChildPowerDrawChange()
     {
-        if(TotalPowerDraw() > MaximumPowerDraw)
+        double t = TotalPowerDraw();
+        if(t > MaximumPowerDraw)
         {
             Shutdown();
         }
