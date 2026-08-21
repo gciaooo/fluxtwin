@@ -33,8 +33,15 @@ public class ApplianceModeSwitcher : MonoBehaviour
             ApplianceMode mode = appliance.AvailableModes[i];
             Toggle toggle = Instantiate(modeTogglePrefab, transform.position, transform.rotation, togglesParent);
             toggle.name = mode.Name + "ModeToggle";
-            toggle.transform.Find("Label").GetComponent<TextMeshProUGUI>().text = mode.Name;
+            
+            TextMeshProUGUI toggleText = toggle.transform.Find("Label").GetComponent<TextMeshProUGUI>(); 
+            toggleText.text = mode.Name;
+            if (!double.IsInfinity(mode.Time)) {
+                String modeDuration = TimeSpan.FromSeconds(mode.Time).ToString("ss"); 
+                toggleText.text += $" ({modeDuration}s)";
+            }
             toggle.group = togglesParent.gameObject.GetComponent<ToggleGroup>();
+            
             int idx = i;
             toggle.onValueChanged.AddListener(isToggleOn => { 
                 if (isToggleOn) appliance.SwitchMode(idx);
@@ -42,6 +49,13 @@ public class ApplianceModeSwitcher : MonoBehaviour
             
             modeToggles.Add(toggle);
         }
+    }
+
+    private void SetTimerText()
+    {
+        if (applianceTimer.IsActive == false)
+            return;
+        timeLeftText.text = TimeSpan.FromSeconds(applianceTimer.TimeRemaining).ToString(@"mm\:ss");
     }
 
     public void SetSwitcherData(String name, Appliance appliance)
@@ -80,7 +94,7 @@ public class ApplianceModeSwitcher : MonoBehaviour
 
     void Update()
     {
-        timeLeftText.text = applianceTimer.TimeRemaining.ToString();
+        SetTimerText();
     }
 
 }
