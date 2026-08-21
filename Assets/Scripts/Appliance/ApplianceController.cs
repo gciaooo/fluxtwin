@@ -57,6 +57,8 @@ public class ApplianceController: MonoBehaviour, IPointerClickHandler, IBeginDra
         Vector3 newPos = Camera.main.ScreenToWorldPoint(eventData.position);
         newPos.z = 0;
         transform.position = newPos;
+
+        applianceView.SetupLinkRenderer(parentWallPlug);
     }
 
     private void DebugLogStats()
