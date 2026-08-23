@@ -8,13 +8,13 @@ Clone this repository and run the project via Unity.
 
 ## How to use
 
-1. Add eletronic devices in the scene by using the already made prefabs.
-2. Hook electronic devices based on the electric hierarchy and configure their power limit.
+1. Add prefab electronic devices (Appliances, ElecLinks) in the scene by using the already made prefabs.
+2. Hook Electronic Devices to their respective parents and configure their power limit.
 3. Run the scene and interact with added Appliances to simulate grid behaviour.
 
 ### Electronic devices
 
-Each electronic device is built as a prefab and follows a specific hierarchy. The hierarchy is as follows:
+Each electronic device type is built as a prefab and can be hooked to each other by following a specific hierarchy. The hierarchy (read as TopLevel --> SecondLevel --> ...) is as follows:
 
 **`ApartmentSource ---> CircuitLine ---> WallPlug ---> Appliance`**
 
@@ -23,8 +23,7 @@ Each electronic device is built as a prefab and follows a specific hierarchy. Th
 To hook electronic devices to each other, go to the Inspector window on their respective Component scripts and add their parent to the field. The project will automatically create a graphical hook between the devices.
 
 > [!INFO]
-> Hook between CircuitLine and WallPlug is still not implemented.
-
+> Graphical hook between CircuitLine and WallPlug is still not implemented.
 
 #### Appliances
 The class of commodity devices used in an household. Graphically represented as a squared Sprite.
