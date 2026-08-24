@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6215567528201006257}
   - component: {fileID: 8552934993918930135}
   - component: {fileID: 289139516475155662}
+  - component: {fileID: 9120411652823381003}
   m_Layer: 0
   m_Name: WallPlug
   m_TagString: Untagged
@@ -107,3 +108,15 @@ MonoBehaviour:
   MaximumPowerDraw: 60
   CircuitLineParent: {fileID: 0}
   appliances: []
+--- !u!114 &9120411652823381003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868624069191796481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2045323922797d3ad8f5698cbfbece1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WallPlugView

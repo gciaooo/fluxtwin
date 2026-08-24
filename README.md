@@ -26,7 +26,7 @@ To hook electronic devices to each other, go to the Inspector window on their re
 > Graphical hook between CircuitLine and WallPlug is still not implemented.
 
 #### Appliances
-The class of commodity devices used in an household. Graphically represented as a squared Sprite.
+The class of commodity devices used in an household.
 
 To add an Appliance, choose one of its two available prefabs (Fridge and Oven) and add it to the scene.
 
@@ -36,7 +36,7 @@ To add an Appliance, choose one of its two available prefabs (Fridge and Oven) a
 To configure an Appliance, go to the `ApplianceController` script component on the Inspector window. There you can change what modes the Appliance can have, how much do they take to complete and their respective power draw.
 
 #### ElecLinks
-ApartmentSources, CircuitLines and WallPlugs are defined as `ElecLink`s. ApartmentSource and WallPlug are represented as a squared Sprite, while CircuitLine is represented as a border box.
+ApartmentSources, CircuitLines and WallPlugs are defined as `ElecLink`s.
 
 To configure ElecLinks, go to the Inspector window on their respective Component script and modify their maximum power limit and their parent.
 

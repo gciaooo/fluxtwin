@@ -46,9 +46,8 @@ public class LinkRenderer : MonoBehaviour
 
     private void SetLineVertices()
     {
-        float startX = childDims.x / 2;
         Vector3 parentLinePos = parentPos;
-        Vector3 componentLinePos = childPos - new Vector3(startX, 0, 0);
+        Vector3 componentLinePos = childPos;
         parentLinePos.z = 1;
         componentLinePos.z = 1;
 

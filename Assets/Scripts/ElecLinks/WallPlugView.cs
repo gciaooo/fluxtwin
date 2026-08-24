@@ -5,11 +5,17 @@ using UnityEngine;
 public class WallPlugView : MonoBehaviour
 {
     private WallPlug wallPlug;
+    private LinkRenderer linkRenderer;
 
     void Start()
     {
         wallPlug = GetComponent<WallPlug>();
         wallPlug.OnPowerSurge += (s, total) => DebugLogStats(total);
+        wallPlug.CircuitLineParent.OnPowerSurge += (s, total) 
+        => linkRenderer.SetErrorLine();
+        
+        linkRenderer = gameObject.AddComponent<LinkRenderer>();
+        linkRenderer.SetObjectsCoordinates(wallPlug.GetParent(), gameObject);
     }
     public void DebugLogStats(double total)
     {

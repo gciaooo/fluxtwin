@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 56c9ba237c7964a408d99b15a492df5a
+guid: 7b8c897b7c72a9fa2983db8db4884579
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1412790188830017900
-    second: wall_plug_off_0
+      213: -8916782406566303997
+    second: circuit_line_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wall_plug_off_0
+      name: circuit_line_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c69ce53013d3b9310800000000000000
-      internalID: 1412790188830017900
+      spriteID: 307a925f4a9314480800000000000000
+      internalID: -8916782406566303997
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wall_plug_off_0: 1412790188830017900
+      circuit_line_0: -8916782406566303997
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
