@@ -22,7 +22,7 @@ Each electronic device type is built as a prefab and can be hooked to each other
 
 To hook electronic devices to each other, go to the Inspector window on their respective Component scripts and add their parent to the field. The project will automatically create a graphical hook between the devices.
 
-> [!INFO]
+> [!NOTE]
 > Graphical hook between CircuitLine and WallPlug is still not implemented.
 
 #### Appliances
