@@ -7,6 +7,7 @@ public class WallPlugView : MonoBehaviour
 {
     private WallPlug wallPlug;
     private LinkRenderer linkRenderer;
+    private DragDropper dragDropper;
     [SerializeField]
     private TextMeshPro powerText;
 
@@ -20,10 +21,17 @@ public class WallPlugView : MonoBehaviour
         wallPlug.OnTotalPowerDrawChange += (s, total)
         => SetPowerDrawText(total);
 
+        dragDropper = gameObject.AddComponent<DragDropper>();
+
         linkRenderer = gameObject.AddComponent<LinkRenderer>();
         linkRenderer.SetObjectsCoordinates(wallPlug.GetParent(), gameObject);
 
         SetPowerDrawText(0);
+    }
+
+    void Update()
+    {
+        linkRenderer.SetObjectsCoordinates(wallPlug.GetParent(), gameObject);
     }
 
     private void SetPowerDrawText(double total)

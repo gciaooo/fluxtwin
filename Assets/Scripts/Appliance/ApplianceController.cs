@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ApplianceController: MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class ApplianceController: MonoBehaviour, IPointerClickHandler 
 {
     [SerializeField]
     private ApplianceView applianceView;
@@ -30,6 +30,10 @@ public class ApplianceController: MonoBehaviour, IPointerClickHandler, IBeginDra
             parentWallPlug.OnChildPowerDrawChange();
         };
     }
+    void Update()
+    {
+        applianceView.SetupLinkRenderer(parentWallPlug);
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -37,28 +41,6 @@ public class ApplianceController: MonoBehaviour, IPointerClickHandler, IBeginDra
         {
             applianceView.SpawnModeSwitcher(appliance);   
         }
-    }
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        if (eventData.button != PointerEventData.InputButton.Left) return;
-        applianceView.ChangeAlpha(0.5f);
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        if (eventData.button != PointerEventData.InputButton.Left) return;
-        applianceView.ChangeAlpha(0f);
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        if (eventData.button != PointerEventData.InputButton.Left) return;
-        Vector3 newPos = Camera.main.ScreenToWorldPoint(eventData.position);
-        newPos.z = 0;
-        transform.position = newPos;
-
-        applianceView.SetupLinkRenderer(parentWallPlug);
     }
 
     private void DebugLogStats()

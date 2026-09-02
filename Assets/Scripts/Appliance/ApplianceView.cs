@@ -6,7 +6,8 @@ public class ApplianceView : MonoBehaviour
     public Sprite spriteOn;
     public Sprite spriteOff;
     private SpriteRenderer sr;
-
+    
+    private DragDropper dragDropper;
     private LinkRenderer linkRenderer;
 
     private bool isFirstSpawn = true;
@@ -57,6 +58,7 @@ public class ApplianceView : MonoBehaviour
 
     void Awake()
     {
+        dragDropper = gameObject.AddComponent<DragDropper>();
         linkRenderer = gameObject.AddComponent<LinkRenderer>();        
     }
 

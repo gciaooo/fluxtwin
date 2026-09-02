@@ -7,6 +7,7 @@ using UnityEngine;
 public class CircuitLineView : MonoBehaviour
 {
     private CircuitLine circuitLine;
+    private DragDropper dragDropper;
     private LinkRenderer linkRenderer;
     [SerializeField]
     private TextMeshPro powerText;
@@ -21,11 +22,17 @@ public class CircuitLineView : MonoBehaviour
         circuitLine.OnTotalPowerDrawChange += (s, total)
         => SetPowerDrawText(total);
 
+        dragDropper = gameObject.AddComponent<DragDropper>();
 
         linkRenderer = gameObject.AddComponent<LinkRenderer>();
         linkRenderer.SetObjectsCoordinates(circuitLine.GetParent(), gameObject);
 
         SetPowerDrawText(0);
+    }
+
+    void Update()
+    {
+        linkRenderer.SetObjectsCoordinates(circuitLine.GetParent(), gameObject);
     }
 
     private void SetPowerDrawText(double total)

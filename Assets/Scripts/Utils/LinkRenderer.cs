@@ -14,16 +14,8 @@ public class LinkRenderer : MonoBehaviour
 
     public void SetObjectsCoordinates(GameObject parent, GameObject child)
     {
-        SpriteRenderer parentSr = parent.GetComponent<SpriteRenderer>();
-        SpriteRenderer componentSr = child.GetComponent<SpriteRenderer>();
-        if (parentSr == null || componentSr == null)
-        {
-            Debug.LogError("SpriteRenderer for LinkRenderer is null");
-        }
         parentPos = parent.transform.position;
-        parentDims = parentSr.size;
         childPos = child.transform.position;
-        childDims = componentSr.size;
         isReady = true;
     }
 

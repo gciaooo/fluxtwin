@@ -1,4 +1,3 @@
-
 using System;
 using TMPro;
 using UnityEngine;
@@ -6,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(ApartmentSource))]
 public class ApartmentSourceView: MonoBehaviour
 {
-   private ApartmentSource apartmentSource;
+    private ApartmentSource apartmentSource;
+    private DragDropper dragDropper;
     [SerializeField]
     private TextMeshPro powerText;
 
@@ -18,6 +18,7 @@ public class ApartmentSourceView: MonoBehaviour
         apartmentSource.OnTotalPowerDrawChange += (s, total)
         => SetPowerDrawText(total);
 
+        dragDropper = gameObject.AddComponent<DragDropper>();
 
         SetPowerDrawText(0);
     }
