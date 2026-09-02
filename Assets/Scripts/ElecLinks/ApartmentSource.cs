@@ -8,6 +8,7 @@ public class ApartmentSource: MonoBehaviour, IElecLink
     public double MaximumPowerDraw;
     public List<CircuitLine> circuitLines = new(); 
     public event EventHandler<double> OnPowerSurge;
+    public event EventHandler<double> OnTotalPowerDrawChange;
     public void AddCircuitLine(CircuitLine line)
     {
         if (circuitLines.Find(x => x == line) == null) circuitLines.Add(line);
@@ -30,6 +31,7 @@ public class ApartmentSource: MonoBehaviour, IElecLink
     public void OnChildPowerDrawChange()
     {
         double t = TotalPowerDraw();
+        OnTotalPowerDrawChange?.Invoke(this, t);
         if(t > MaximumPowerDraw) {
             Shutdown();
         }

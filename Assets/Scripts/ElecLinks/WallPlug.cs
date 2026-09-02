@@ -10,6 +10,7 @@ public class WallPlug : MonoBehaviour, IElecLink
     public List<Appliance> appliances = new();
 
     public event EventHandler<double> OnPowerSurge;
+    public event EventHandler<double> OnTotalPowerDrawChange;
 
     public void AddAppliance(Appliance app)
     {
@@ -46,6 +47,7 @@ public class WallPlug : MonoBehaviour, IElecLink
     public void OnChildPowerDrawChange()
     {
         double t = TotalPowerDraw();
+        OnTotalPowerDrawChange?.Invoke(this, t);
         if(t > MaximumPowerDraw)
         {
             Shutdown();
