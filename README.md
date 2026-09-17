@@ -1,4 +1,4 @@
-# EMS - Energy Management System
+# FluxTwin
 
 A Unity Project that simulates and monitors electricity in an apartment housing. Built for the future development of an Planning-based device automation system.
 
