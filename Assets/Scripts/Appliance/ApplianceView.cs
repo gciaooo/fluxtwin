@@ -36,6 +36,11 @@ public class ApplianceView : MonoBehaviour
         modeSwitcherHandler.OnModeSwitcherActivated(modeSwitcher);        
     }
 
+    public void DestroyModeSwitcher()
+    {
+        Destroy(modeSwitcher.gameObject);
+    }
+
     public void UpdatePowerDrawView(double powerDraw)
     {
         modeSwitcher.UpdatePowerDraw(powerDraw);

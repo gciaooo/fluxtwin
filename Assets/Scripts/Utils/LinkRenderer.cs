@@ -8,6 +8,7 @@ public class LinkRenderer : MonoBehaviour
     private Vector3 childPos;
     private Vector3 childDims;
     private Color defaultColor = new(0.39f, 0.6f, 1);    
+    private Color errorColor = new(0.85882352f, 0.16862745098039217f, 0.2235294117647059f);
     private bool isReady = false;
 
     private LineRenderer lineRenderer;
@@ -21,8 +22,8 @@ public class LinkRenderer : MonoBehaviour
 
     public void SetErrorLine()
     {
-        lineRenderer.startColor = Color.red;
-        lineRenderer.endColor = Color.red;
+        lineRenderer.startColor = errorColor;
+        lineRenderer.endColor = errorColor;
         isReady = true;
     }
 

@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - appliance
-  - modeSwitcher
+  - gridElem
   layers:
   - Default
   - TransparentFX

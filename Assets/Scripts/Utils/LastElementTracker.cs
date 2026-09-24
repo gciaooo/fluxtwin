@@ -13,6 +13,8 @@ public class LastElementTracker: MonoBehaviour
     private GameObject[] lastElecLinks = new GameObject[3];
     private int[] elemCounts = {0,0,0,0};
     
+    public event EventHandler<ElemType> AtLeast;
+
     public void OnElementInstantiated(GameObject elem)
     {
         ElemType? type = FetchElemType(elem);
@@ -22,11 +24,13 @@ public class LastElementTracker: MonoBehaviour
             return;
         }
 
+        AtLeast?.Invoke(this, type.GetValueOrDefault());
+
         LinkElem(elem, type.GetValueOrDefault());
         if (type != ElemType.Appliance) lastElecLinks[(int)type] = elem;
     }
 
-    private ElemType? FetchElemType(GameObject elem)
+    public ElemType? FetchElemType(GameObject elem)
     {
         if (elem.GetComponent<ApplianceController>() != null)
             return ElemType.Appliance;
@@ -39,10 +43,9 @@ public class LastElementTracker: MonoBehaviour
         return null;
     }
 
-    public String nameElem(GameObject elem)
+    public string NameElem(GameObject elem, ElemType? type)
     {
-        ElemType? type = FetchElemType(elem);
-        String result = (type.ToString() ?? "Unknown") + elemCounts[(int)type];
+        string result = (type.ToString() ?? "Unknown") + elemCounts[(int)type];
         elemCounts[(int)type]++;
         return result; 
     }

@@ -13,28 +13,33 @@ GameObject:
   - component: {fileID: 6945029962311887336}
   - component: {fileID: 4526629394460783364}
   - component: {fileID: 1422804564753755776}
+  - component: {fileID: 5016263922502029410}
   m_Layer: 0
-  m_Name: Oven
-  m_TagString: appliance
+  m_Name: Fridge
+  m_TagString: gridElem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5867425702670265870
-Transform:
+--- !u!224 &5867425702670265870
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330143963902517039}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &5734336174167910884
 SpriteRenderer:
   serializedVersion: 2
@@ -84,7 +89,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 4846913611564436876, guid: 9aabaedc509260c429c7133917b429c2, type: 3}
+  m_Sprite: {fileID: -7419904524070093709, guid: 3fec4394dd520294ab08cd36368a3c88, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -152,8 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8f0c33edcb1434191b5280874e1307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ApplianceView
-  spriteOn: {fileID: -7472254467221915223, guid: 834d617a26da1d543a6a92e12a31f5b6, type: 3}
-  spriteOff: {fileID: 4846913611564436876, guid: 9aabaedc509260c429c7133917b429c2, type: 3}
+  spriteOn: {fileID: 5739897283171119737, guid: deb562fdbd92a5040a1c5c9bae3a7d76, type: 3}
+  spriteOff: {fileID: -7419904524070093709, guid: 3fec4394dd520294ab08cd36368a3c88, type: 3}
   modeSwitcherPrefab: {fileID: 807269503375468888, guid: 5f8720466a014584db3bb7c7a20a8012, type: 3}
   modeSwitcherHandler: {fileID: 0}
 --- !u!114 &1422804564753755776
@@ -171,9 +176,18 @@ MonoBehaviour:
   applianceView: {fileID: 4526629394460783364}
   appliance:
     availableModes:
-    - name: Normal
+    - name: Winter
       powerDraw: 20
-      time: 60
-    - name: Ventilated
+      time: Infinity
+    - name: Summer
       powerDraw: 40
-      time: 30
+      time: Infinity
+  parentWallPlug: {fileID: 0}
+--- !u!222 &5016263922502029410
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330143963902517039}
+  m_CullTransparentMesh: 1
