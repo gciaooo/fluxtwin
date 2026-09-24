@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnDragger
   prefabToSpawn: {fileID: 6836901755574772522, guid: 58ab6268db45459b0ad35aa4be48f54c, type: 3}
-  cleaner: {fileID: 0}
+  cleaner: {fileID: 87976168756411562}
 --- !u!1 &3104494975621189682
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnDragger
   prefabToSpawn: {fileID: 1330143963902517039, guid: dbd18a00a100d9a43a2fd62a65fe5ce9, type: 3}
-  cleaner: {fileID: 0}
+  cleaner: {fileID: 87976168756411562}
 --- !u!1 &3509522541546533539
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnDragger
   prefabToSpawn: {fileID: 3270184113571033283, guid: 9484e48ce609d3649bcb6af0b8ffe0c3, type: 3}
-  cleaner: {fileID: 0}
+  cleaner: {fileID: 87976168756411562}
 --- !u!1 &5848535156414194715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +1008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnDragger
   prefabToSpawn: {fileID: 3868624069191796481, guid: 9969f91896ee240eab284ff33664ce73, type: 3}
-  cleaner: {fileID: 0}
+  cleaner: {fileID: 87976168756411562}
 --- !u!1 &7703224594122274427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,7 +1295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnDragger
   prefabToSpawn: {fileID: 1330143963902517039, guid: 877f1f4645c1e4649bc1945828fe7069, type: 3}
-  cleaner: {fileID: 0}
+  cleaner: {fileID: 87976168756411562}
 --- !u!1 &8471492596502042130
 GameObject:
   m_ObjectHideFlags: 0
