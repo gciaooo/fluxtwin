@@ -90,6 +90,7 @@ public class ApplianceModeSwitcher : MonoBehaviour
     void Start()
     {
         GetComponent<Canvas>().worldCamera = Camera.main;
+        timeLeftText.text = TimeSpan.FromSeconds(0).ToString(@"mm\:ss");
     }
 
     void Update()
