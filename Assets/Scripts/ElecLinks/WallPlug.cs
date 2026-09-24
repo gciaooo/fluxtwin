@@ -6,9 +6,7 @@ public class WallPlug : MonoBehaviour, IElecLink
 {
     public double MaximumPowerDraw; 
     public CircuitLine CircuitLineParent;
-
-    public List<Appliance> appliances = new();
-
+    [HideInInspector] public List<Appliance> appliances = new();
     public event EventHandler<double> OnPowerSurge;
     public event EventHandler<double> OnTotalPowerDrawChange;
 

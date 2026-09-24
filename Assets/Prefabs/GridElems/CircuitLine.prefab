@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3138000402446295354}
   - component: {fileID: 5812430086817553499}
   - component: {fileID: 4152256820011069548}
-  - component: {fileID: 3921254523782616739}
   - component: {fileID: 8626990805046857771}
+  - component: {fileID: 3921254523782616739}
   m_Layer: 0
   m_Name: CircuitLine
   m_TagString: gridElem
@@ -141,6 +141,19 @@ BoxCollider2D:
   m_AutoTiling: 1
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8626990805046857771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3270184113571033283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca03e016d17acf0b8b6a397d8752003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CircuitLineView
+  powerText: {fileID: 195248316457260018}
 --- !u!114 &3921254523782616739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,19 +169,6 @@ MonoBehaviour:
   MaximumPowerDraw: 100
   ApartmentSourceParent: {fileID: 0}
   wallPlugs: []
---- !u!114 &8626990805046857771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3270184113571033283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bca03e016d17acf0b8b6a397d8752003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CircuitLineView
-  powerText: {fileID: 195248316457260018}
 --- !u!1 &7859711548988718312
 GameObject:
   m_ObjectHideFlags: 0

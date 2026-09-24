@@ -6,9 +6,10 @@ public class CircuitLine: MonoBehaviour, IElecLink
 {
     public double MaximumPowerDraw;
     public ApartmentSource ApartmentSourceParent;
-    public List<WallPlug> wallPlugs = new();
+    [HideInInspector] public List<WallPlug> wallPlugs = new();
     public event EventHandler<double> OnPowerSurge;
     public event EventHandler<double> OnTotalPowerDrawChange;
+    
     public void AddWallPlug(WallPlug plug)
     {
         if (wallPlugs.Find(x => x == plug) == null) wallPlugs.Add(plug);

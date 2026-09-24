@@ -4,14 +4,13 @@ using UnityEngine.EventSystems;
 
 public class ApplianceController: MonoBehaviour, IPointerClickHandler 
 {
-    [SerializeField]
-    private ApplianceView applianceView;
-
-    [SerializeField]
-    private Appliance appliance;
-
-    [SerializeField]
-    public WallPlug parentWallPlug;
+    [SerializeField] private ApplianceView applianceView;
+    [Space]
+    
+    [Header("User-Interactable Properties")]
+    [Space]
+    [SerializeField] public WallPlug parentWallPlug;
+    [SerializeField] private Appliance appliance;
 
     void Start()
     {

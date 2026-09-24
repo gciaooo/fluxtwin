@@ -6,7 +6,7 @@ public class ApartmentSource: MonoBehaviour, IElecLink
 {
     [SerializeField]
     public double MaximumPowerDraw;
-    public List<CircuitLine> circuitLines = new(); 
+    [HideInInspector] public List<CircuitLine> circuitLines = new(); 
     public event EventHandler<double> OnPowerSurge;
     public event EventHandler<double> OnTotalPowerDrawChange;
     public void AddCircuitLine(CircuitLine line)
