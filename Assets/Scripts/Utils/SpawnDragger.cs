@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class SpawnDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] GameObject prefabToSpawn;
+    private LastElementTracker tracker;
 
     private GameObject placeholder;
     private Sprite prefabImage;
@@ -11,6 +12,7 @@ public class SpawnDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     private void Awake()
     {
         prefabImage = prefabToSpawn.GetComponent<SpriteRenderer>().sprite;
+        tracker = FindAnyObjectByType<LastElementTracker>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -39,6 +41,8 @@ public class SpawnDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
         Collider2D col = Physics2D.OverlapBox(pos, size, 0f);
         if (col != null) return;
         
-        Instantiate(prefabToSpawn, pos, Quaternion.identity);
+        GameObject prefab = Instantiate(prefabToSpawn, pos, Quaternion.identity);
+        prefab.name = tracker.nameElem(prefab);
+        tracker.OnElementInstantiated(prefab);
     }
 }

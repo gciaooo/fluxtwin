@@ -60,6 +60,7 @@ public class ApplianceView : MonoBehaviour
     {
         dragDropper = gameObject.AddComponent<DragDropper>();
         linkRenderer = gameObject.AddComponent<LinkRenderer>();        
+        modeSwitcherHandler = FindAnyObjectByType<ModeSwitcherHandler>();
     }
 
     private void Start()

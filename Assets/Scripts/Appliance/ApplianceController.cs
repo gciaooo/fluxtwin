@@ -11,7 +11,7 @@ public class ApplianceController: MonoBehaviour, IPointerClickHandler
     private Appliance appliance;
 
     [SerializeField]
-    private WallPlug parentWallPlug;
+    public WallPlug parentWallPlug;
 
     void Start()
     {
