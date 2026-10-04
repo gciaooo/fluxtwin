@@ -2,6 +2,7 @@
 using System;
 using System.Threading;
 using UnityEngine;
+//Helper class that handles time for Appliances
 public class ApplianceTimer
 {
    public float Duration { get; private set; }
@@ -42,6 +43,7 @@ public class ApplianceTimer
       cts.Cancel();
    }
 
+   //TODO: resolve bug for unexpected behaviour on ApplianceView timer view on mode changed
    public void Reset(float duration) => Reset(duration, 1, false);
    public void Reset(float duration, bool loop) => Reset(duration, 0, true);
    public void Reset(float duration, int repeats) => Reset(duration, repeats, false);

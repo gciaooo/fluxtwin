@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//Enables pan and zoom on the scene during runtime. Uses the Input Action Unity system
 public class CameraMovement : MonoBehaviour
 {
     private Camera cam;

@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+//Simple Component that removes all elements in the grid. It is currently used only on the 'Clean grid' button present on the SpawnMenu
 public class GridCleaner : MonoBehaviour
 {
     public event EventHandler OnGridCleaning;

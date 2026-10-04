@@ -2,11 +2,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+//Class that enables the object spawning from the SpawnMenu when dragging elements from it. Temporarily requires a LastElemTracker to function for instantiation of gridElements.
 public class SpawnDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private GameObject prefabToSpawn;
-    private LastElementTracker.ElemType? prefabType;
     [SerializeField] private GridCleaner cleaner;
+    //TODO: change LastElementTracker completely and substitute with a complete interaction system for editing links and properties of elements added
+    private LastElementTracker.ElemType? prefabType;
     private LastElementTracker tracker;
 
     private GameObject placeholder;
@@ -70,6 +72,7 @@ public class SpawnDragger : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
         Collider2D col = Physics2D.OverlapBox(pos, size, 0f);
         if (col != null) return;
         
+        //TODO: substitute cobe block on removal of LastElementTracker with complete editor system
         GameObject prefab = Instantiate(prefabToSpawn, pos, Quaternion.identity);
         prefab.name = tracker.NameElem(prefab, prefabType);
         tracker.OnElementInstantiated(prefab);

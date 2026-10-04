@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Canvas))]
+//Class that enables user manual interaction with appliances properties during runtime
 public class ApplianceModeSwitcher : MonoBehaviour
 {
     private readonly List<Toggle> modeToggles = new();
@@ -26,6 +27,8 @@ public class ApplianceModeSwitcher : MonoBehaviour
     private Sprite statusOff;
 
     private ApplianceTimer applianceTimer;
+    
+    //Called on first initialization during SetSwitcherData()
     private void SetToggles(Appliance appliance)
     {
         for (int i = 0; i < appliance.AvailableModes.Count; i++)
@@ -58,6 +61,7 @@ public class ApplianceModeSwitcher : MonoBehaviour
         timeLeftText.text = TimeSpan.FromSeconds(applianceTimer.TimeRemaining).ToString(@"mm\:ss");
     }
 
+    //Populates all fields of the instantiated prefab to their specific value for its relative appliance
     public void SetSwitcherData(String name, Appliance appliance)
     {
         gameObject.name = name + "ModeSwitcher";

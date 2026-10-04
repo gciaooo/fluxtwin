@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(ApplianceController))]
 [RequireComponent(typeof(ApplianceView))]
 [Serializable]
+// Model of the Appliance class. An Appliance is uniquely defined as a list of ApplianceModes. Future agents development should connect Sensors and Actuators only to this class.
 public class Appliance
 {
     [SerializeField]

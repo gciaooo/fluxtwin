@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Collider2D))]
+//Component class that enables dragging of elements in the electrical grid when added as a Component
 public class DragDropper: MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     private SpriteRenderer sr;

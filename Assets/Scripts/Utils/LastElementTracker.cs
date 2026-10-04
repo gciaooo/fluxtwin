@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+//TODO: substitute this class with a more complete instantiator (that lets you set properties and link manually)
+//Class that tracks the last element grid that has been instantiated via the SpawnMenu and how many are present in the current scene
 public class LastElementTracker: MonoBehaviour
 {
     public enum ElemType
@@ -53,6 +55,7 @@ public class LastElementTracker: MonoBehaviour
     private void LinkElem(GameObject elem, ElemType type)
     {
         if (type == ElemType.ApartmentSource) return;
+        //Simply set the element parent to its corresponding parentType based on the last one that has been instantiated
         switch(type)
         {
             case ElemType.CircuitLine:

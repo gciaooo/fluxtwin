@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+//Enables Dropdown behaviour and animations for bringing the SpawnMenu up and down.
 public class SpawnMenuResizer: MonoBehaviour
 {
     private Animator spawnMenuAnimator;
+    //Parameter specific of the SpawnMenuAnimController animation controller.
     private readonly int animationParameterId = Animator.StringToHash("IsOpen");
     private Toggle expander;
     private Image expanderImage;

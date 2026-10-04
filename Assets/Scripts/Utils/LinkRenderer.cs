@@ -1,12 +1,10 @@
 using UnityEngine;
 
+//Class that shows links between a grid element and its parent. Uses a LineRenderer component for the graphic representation of the link. LinkRenderers are handled by objects that are children of the link. For example, in the link between a CircuitLineView and a WallPlugView, the reference of the LinkRenderer is kept on WallPlugView.
 public class LinkRenderer : MonoBehaviour
 {
     private Vector3 parentPos;
-    private Vector3 parentDims;
-
     private Vector3 childPos;
-    private Vector3 childDims;
     private Color defaultColor = new(0.39f, 0.6f, 1);    
     private Color errorColor = new(0.85882352f, 0.16862745098039217f, 0.2235294117647059f);
     private bool isReady = false;

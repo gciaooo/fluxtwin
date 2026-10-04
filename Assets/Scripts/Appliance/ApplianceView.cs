@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
+//Class that handles presentation of both the Appliance (with a square sprite) and its relative ApplianceModeSwitcher
 public class ApplianceView : MonoBehaviour
 {
     public Sprite spriteOn;
@@ -51,6 +52,7 @@ public class ApplianceView : MonoBehaviour
         sr.color = Color.white - new Color(0,0,0,alpha);
     }
 
+    //Used on the ApplianceController upon instantiation of the appliance
     public void SetupLinkRenderer(WallPlug parent)
     {
        linkRenderer.SetObjectsCoordinates(parent.gameObject, gameObject); 
